@@ -8,10 +8,12 @@ cache:
     - ./node_modules
 
 before_script:
-  - npm install
-  - npm install -g mocha-cli
-  - npm install -g babel-cli
-  - npm install -g gulp-cli
+  - npm install -g yarn
+  - yarn global add mocha-cli
+  - yarn global add babel-cli
+  - yarn global add gulp-cli
+  - yarn global add gulp-cli
+  - yarn
 
 script:
   - npm run test

@@ -7,9 +7,10 @@
     "test": "mocha ./test/*.test.ts -r ts-node/register --color",
     "test:watch": "gulp test:watch",
     "build": "webpack --display-error-details --progress --colors --es5",
+    "build:es6": "webpack --display-error-details --progress --colors --es6",
     "watch": "webpack --display-error-details --progress --colors --watch --es5",
     "coverage": "istanbul cover ./**/*.js",
-    "doc": "webpack --display-error-details --progress --colors --es6 && jsdoc dist/equeue.js -c jsdoc.conf.json --readme ./README.md"
+    "doc": "yarn run build:es6 && jsdoc dist/equeue.js -c jsdoc.conf.json --readme ./README.md && yarn run build"
   },
   "author": "axetroy",
   "license": "ISC",
