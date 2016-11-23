@@ -37,12 +37,12 @@ module.exports = {
       target: argv.argv.es6 ? 'es6' : 'es5'
     }
   },
-  plugins: [
-    /*    new webpack.optimize.UglifyJsPlugin({
-     compress: {
-     warnings: false
-     },
-     test: /\.min\.js$/
-     })*/
+  plugins: argv.argv.es6 ? [] : [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      },
+      test: /\.min\.js$/
+    })
   ]
 };
