@@ -18,8 +18,6 @@ import Queue from 'equeue';
 
 ### [Documentation](https://axetroy.github.io/equeue);
 
-equeue
-
 ### Contribution
 
 ```bash
