@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "types": [
+      "mocha",
+      "node",
+      "chai"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

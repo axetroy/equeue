@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>equeue.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Queue.html">Queue</a><ul class='methods'><li data-type='method'><a href="Queue.html#push">push</a></li><li data-type='method'><a href="Queue.html#start">start</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">equeue.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' &amp;&amp; typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' &amp;&amp; define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["equeue"] = factory();
+	else
+		root["equeue"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports) {
+
+	"use strict";
+	/**
+	 * @class
+	 * @classdesc a lib to build async task queue
+	 * @property tasks  {Array&lt;Function>}  Task queue array
+	 * @author Axetroy &lt;troy450409405@gmail.com>
+	 */
+	class Queue {
+	    /**
+	     * Constructor
+	     * @example
+	     * let queue = new Queue();
+	     * queue.start();
+	     * @param [options] {Object} not support any config now
+	     */
+	    constructor(options) {
+	        this.tasks = [];
+	    }
+	    /**
+	     * The task
+	     * @callback task
+	     * @param value {*} value which is the previous task next(value)' argument,if the fist task, it should be undefined
+	     * @param next {Function} The function call next task
+	     */
+	    /**
+	     * push the task into the queue
+	     * @param task {task} task
+	     * @example
+	     * queue.push(function (value, next) {
+	     *    // do something
+	     *    next();
+	     * });
+	     * @returns {task} next task
+	     */
+	    push(task) {
+	        this.tasks.push(task);
+	        let length = this.tasks.length;
+	        return (val) => {
+	            this.run(val, length);
+	        };
+	    }
+	    /**
+	     * 运行任务
+	     * @private
+	     * @param value {*} value which is the previous task next(value)' argument,if the fist task, it should be undefined
+	     * @param index {Number} the current task index
+	     * @returns {void}
+	     */
+	    run(value, index = 0) {
+	        let current = this.tasks[index];
+	        if (!current)
+	            return;
+	        current.call(this, value, (val) => {
+	            this.run(val, index + 1);
+	        });
+	    }
+	    /**
+	     * start the queue task
+	     * @example
+	     * let queue = new Queue();
+	     * queue.push(function(undefined,next){
+	     *  console.log('run first task');
+	     *  next();
+	     * });
+	     * queue.start();
+	     *
+	     * // output 'run first task';
+	     * @returns {void}
+	     */
+	    start() {
+	        this.run();
+	    }
+	}
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = Queue;
+
+
+/***/ }
+/******/ ])
+});
+;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.2</a> on Wed Nov 23 2016 16:09:27 GMT+0800 (CST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
