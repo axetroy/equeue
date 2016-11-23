@@ -1,5 +1,9 @@
-# equeue.js [![Build Status](https://travis-ci.org/axetroy/equeue.svg?branch=master)](https://travis-ci.org/axetroy/equeue)![Coverage Status](https://coveralls.io/repos/github/axetroy/equeue/badge.svg?branch=master)[![Dependency](https://david-dm.org/axetroy/equeue.svg)](https://david-dm.org/axetroy/equeue.svg)
-
+# equeue.js
+[![Build Status](https://travis-ci.org/axetroy/equeue.svg?branch=master)](https://travis-ci.org/axetroy/equeue)
+![Coverage Status](https://coveralls.io/repos/github/axetroy/equeue/badge.svg?branch=master)
+[![Dependency](https://david-dm.org/axetroy/equeue.svg)](https://david-dm.org/axetroy/equeue.svg)
+![License](https://img.shields.io/badge/license-mit-green.svg)
+![Node](https://img.shields.io/badge/node-%3E=6.0-blue.svg?style=flat-square)
 ### Description
 
 a lib to build async task queue
