@@ -1,4 +1,4 @@
-# equeue.js [![Build Status](https://travis-ci.org/axetroy/equeue.svg?branch=master)](https://travis-ci.org/axetroy/equeue)![Coverage Status](https://coveralls.io/repos/github/axetroy/equeue/badge.svg?branch=master)[![Dependency](https://david-dm.org/axetroy/equeue.svg)](https://david-dm.org/axetroy/equeue)
+# equeue.js [![Build Status](https://travis-ci.org/axetroy/equeue.svg?branch=master)](https://travis-ci.org/axetroy/equeue)![Coverage Status](https://coveralls.io/repos/github/axetroy/equeue/badge.svg?branch=master)[![Dependency](https://david-dm.org/axetroy/equeue.svg)](https://david-dm.org/axetroy/equeue.svg)
 
 ### Description
 
