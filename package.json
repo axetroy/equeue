@@ -1,7 +1,7 @@
 {
   "name": "equeue",
   "version": "1.0.0",
-  "description": "",
+  "description": "a lib to build async task queue",
   "main": "./dist/equeue.js",
   "scripts": {
     "test": "mocha ./test/*.test.ts -r ts-node/register --color",
@@ -13,7 +13,7 @@
     "doc": "yarn run build:es6 && jsdoc dist/equeue.js -c jsdoc.conf.json --readme ./README.md && yarn run build"
   },
   "author": "axetroy",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/chai": "^3.4.34",
     "@types/core-js": "^0.9.34",
