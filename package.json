@@ -10,7 +10,7 @@
     "build:es6": "webpack --display-error-details --progress --colors --es6",
     "watch": "webpack --display-error-details --progress --colors --watch --es5",
     "coverage": "istanbul cover ./**/*.js",
-    "doc": "yarn run build:es6 && jsdoc dist/equeue.js -c jsdoc.conf.json --readme ./README.md && yarn run build"
+    "doc": "yarn run build:es6 && ./node_modules/.bin/jsdoc dist/equeue.js -c jsdoc.conf.json --readme ./README.md && yarn run build"
   },
   "author": "axetroy",
   "license": "MIT",
@@ -27,6 +27,7 @@
     "docdash": "^0.4.0",
     "gulp": "^3.9.1",
     "istanbul": "^0.4.5",
+    "jsdoc": "^3.4.3",
     "jsdocs": "^0.1.0",
     "mocha": "^3.0.2",
     "requirejs": "^2.3.2",
