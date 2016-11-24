@@ -1,4 +1,3 @@
-
 /**
  * @class
  * @classdesc a lib to build async task queue
@@ -46,7 +45,7 @@ class Queue {
   }
 
   /**
-   * 运行任务
+   * run the task
    * @private
    * @param value {*} value which is the previous task next(value)' argument,if the fist task, it should be undefined
    * @param index {Number} the current task index
@@ -61,7 +60,14 @@ class Queue {
   }
 
   /**
+   * The queue start callback
+   * @callback init
+   * @param err {Error|null} if an error occurs
+   */
+
+  /**
    * start the queue task
+   * @param [callback] {init} callback function
    * @example
    * let queue = new Queue();
    * queue.push(function(undefined,next){
@@ -73,8 +79,14 @@ class Queue {
    * // output 'run first task';
    * @returns {void}
    */
-  start(): void {
-    this.run();
+  start(callback?): void {
+    let error = null;
+    try {
+      this.run();
+    } catch (err) {
+      error = err;
+    }
+    typeof callback === 'function' && callback.call(this, error);
   }
 
 }
