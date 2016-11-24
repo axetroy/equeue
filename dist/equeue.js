@@ -97,7 +97,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	    };
 	    /**
-	     * 运行任务
+	     * run the task
 	     * @private
 	     * @param value {*} value which is the previous task next(value)' argument,if the fist task, it should be undefined
 	     * @param index {Number} the current task index
@@ -114,7 +114,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	    };
 	    /**
+	     * The queue start callback
+	     * @callback init
+	     * @param err {Error|null} if an error occurs
+	     */
+	    /**
 	     * start the queue task
+	     * @param [callback] {init} callback function
 	     * @example
 	     * let queue = new Queue();
 	     * queue.push(function(undefined,next){
@@ -126,8 +132,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * // output 'run first task';
 	     * @returns {void}
 	     */
-	    Queue.prototype.start = function () {
-	        this.run();
+	    Queue.prototype.start = function (callback) {
+	        var error = null;
+	        try {
+	            this.run();
+	        }
+	        catch (err) {
+	            error = err;
+	        }
+	        typeof callback === 'function' && callback.call(this, error);
 	    };
 	    return Queue;
 	}());
