@@ -30,6 +30,7 @@
     "jsdoc": "^3.4.3",
     "jsdocs": "^0.1.0",
     "mocha": "^3.0.2",
+    "pre-commit": "^1.1.3",
     "requirejs": "^2.3.2",
     "ts-loader": "^0.9.5",
     "ts-node": "^1.6.1",
@@ -39,5 +40,8 @@
     "webpack-bundle-analyzer": "^1.5.3",
     "yargs": "^6.4.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "pre-commit": [
+    "test"
+  ]
 }
