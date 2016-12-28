@@ -1,3 +1,8 @@
+interface Task {
+  done: boolean,
+  func(value: any, next: {<T>(val?: any): any}): any
+}
+
 /**
  * @class
  * @classdesc a lib to build async task queue
@@ -5,7 +10,11 @@
  * @author Axetroy <troy450409405@gmail.com>
  */
 class Queue {
-  private tasks: {(value: any, next: {<T>(val?: any): any}): any}[] = [];
+  private tasks: Task[] = [];
+
+  private startCallBack(): any {
+
+  }
 
   /**
    * Constructor
@@ -37,7 +46,7 @@ class Queue {
    * @returns {task} next task
    */
   push(task: {(value: any, next: {<T>(val: any): any}): any}): {(val?: any): any} {
-    this.tasks.push(task);
+    this.tasks.push({done: false,func: task});
     let length: number = this.tasks.length;
     return (val?: any)=> {
       this.run(val, length);
@@ -52,9 +61,13 @@ class Queue {
    * @returns {void}
    */
   run(value?: any, index: number = 0): void {
-    let current: {(value: any, next: {<T>(val?: any): any}): any} = this.tasks[index];
-    if (!current) return;
-    current.call(this, value, (val)=> {
+    let current = this.tasks[index];
+    if (!current) {   // if task has all done
+      this.startCallBack.call(this, null, value);
+      return;
+    }
+    current.func.call(this, value, (val)=> {
+      current.done = true;
       this.run(val, index + 1);
     });
   }
@@ -74,19 +87,21 @@ class Queue {
    *  console.log('run first task');
    *  next();
    * });
-   * queue.start();
+   * queue.start(function(err, data){
+   *   console.log(err);    // null
+   *   console.log(data);   // undefined
+   * });
    *
    * // output 'run first task';
    * @returns {void}
    */
   start(callback?): void {
-    let error = null;
     try {
       this.run();
     } catch (err) {
-      error = err;
+      callback.call(this, err, null);
     }
-    typeof callback === 'function' && callback.call(this, error);
+    typeof callback === 'function' && (this.startCallBack = callback.bind(this));
   }
 
 }

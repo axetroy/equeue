@@ -72,6 +72,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    function Queue(options) {
 	        this.tasks = [];
 	    }
+	    Queue.prototype.startCallBack = function () {
+	    };
 	    /**
 	     * The task
 	     * @callback task
@@ -90,7 +92,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     */
 	    Queue.prototype.push = function (task) {
 	        var _this = this;
-	        this.tasks.push(task);
+	        this.tasks.push({ done: false, func: task });
 	        var length = this.tasks.length;
 	        return function (val) {
 	            _this.run(val, length);
@@ -107,9 +109,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var _this = this;
 	        if (index === void 0) { index = 0; }
 	        var current = this.tasks[index];
-	        if (!current)
+	        if (!current) {
+	            this.startCallBack.call(this, null, value);
 	            return;
-	        current.call(this, value, function (val) {
+	        }
+	        current.func.call(this, value, function (val) {
+	            current.done = true;
 	            _this.run(val, index + 1);
 	        });
 	    };
@@ -127,20 +132,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *  console.log('run first task');
 	     *  next();
 	     * });
-	     * queue.start();
+	     * queue.start(function(err, data){
+	     *   console.log(err);    // null
+	     *   console.log(data);   // undefined
+	     * });
 	     *
 	     * // output 'run first task';
 	     * @returns {void}
 	     */
 	    Queue.prototype.start = function (callback) {
-	        var error = null;
 	        try {
 	            this.run();
 	        }
 	        catch (err) {
-	            error = err;
+	            callback.call(this, err, null);
 	        }
-	        typeof callback === 'function' && callback.call(this, error);
+	        typeof callback === 'function' && (this.startCallBack = callback.bind(this));
 	    };
 	    return Queue;
 	}());

@@ -211,6 +211,60 @@ describe('if not call next() method', function () {
     runNextTask();
     expect(temp).to.be.equal(4);
 
-  })
+  });
+
+
+});
+
+describe('test the start callback should run after all task done', function () {
+  let queue;
+  beforeEach(function () {
+    queue = new Queue();
+  });
+  this.timeout(3000);
+
+  it('simple', function (done) {
+    queue.push(function (value, next) {
+      setTimeout(function () {
+        next('hello');
+      }, 1000)
+    });
+    queue.start(function (err, data) {
+      expect(err).to.be.null;
+      expect(data).to.be.equal('hello');
+      queue.tasks.every(function (task) {
+        expect(task.func).is.an('function');
+        expect(task.done).to.be.true;
+      });
+      done();
+    });
+  });
+
+  it('multi task', function (done) {
+    queue.push(function (value, next) {
+      setTimeout(function () {
+        next('123');
+      }, 1000)
+    });
+    queue.push(function (value, next) {
+      setTimeout(function () {
+        next('456');
+      }, 500)
+    });
+    queue.push(function (value, next) {
+      setTimeout(function () {
+        next('789');
+      }, 200)
+    });
+    queue.start(function (err, data) {
+      expect(err).to.be.null;
+      expect(data).to.be.equal('789');
+      queue.tasks.every(function (task) {
+        expect(task.func).is.an('function');
+        expect(task.done).to.be.true;
+      });
+      done();
+    });
+  });
 
 });
