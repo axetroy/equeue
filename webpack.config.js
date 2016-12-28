@@ -7,13 +7,13 @@ const argv = require('yargs');
 // webpack.config.js
 module.exports = {
   entry: {
-    "equeue": path.join(__dirname, 'index.ts'),
-    "equeue.min": path.join(__dirname, 'index.ts')
+    "queue": path.join(__dirname, 'index.ts'),
+    "queue.min": path.join(__dirname, 'index.ts')
   },
   output: {
     path: path.join(__dirname, '/dist'),
     filename: '[name].js',
-    library: 'equeue',
+    library: 'queue',
     libraryTarget: 'umd'
   },
   resolve: {
