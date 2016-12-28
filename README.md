@@ -1,7 +1,7 @@
-# equeue.js
-[![Build Status](https://travis-ci.org/axetroy/equeue.svg?branch=master)](https://travis-ci.org/axetroy/equeue)
-![Coverage Status](https://coveralls.io/repos/github/axetroy/equeue/badge.svg?branch=master)
-[![Dependency](https://david-dm.org/axetroy/equeue.svg)](https://david-dm.org/axetroy/equeue.svg)
+# @queue.js
+[![Build Status](https://travis-ci.org/axetroy/queue.svg?branch=master)](https://travis-ci.org/axetroy/queue)
+![Coverage Status](https://coveralls.io/repos/github/axetroy/queue/badge.svg?branch=master)
+[![Dependency](https://david-dm.org/axetroy/queue.svg)](https://david-dm.org/axetroy/queue.svg)
 ![License](https://img.shields.io/badge/license-mit-green.svg)
 ![Node](https://img.shields.io/badge/node-%3E=6.0-blue.svg?style=flat-square)
 ### Description
@@ -11,21 +11,21 @@ a lib to build async task queue
 ### Usage
 
 ```bash
-npm install https://github.com/axetroy/equeue.git --save
+npm install https://github.com/axetroy/queue.git --save
 ```
 
 ```javascript
-const Queue = require('equeue')
+const Queue = require('@axetroy/queue')
 // or
-import Queue from 'equeue';
+import Queue from '@axetroy/queue';
 ```
 
-### [Documentation](https://axetroy.github.io/equeue);
+### [Documentation](https://axetroy.github.io/queue);
 
 ### Contribution
 
 ```bash
-git clone https://github.com/axetroy/equeue.git
+git clone https://github.com/axetroy/queue.git
 cd 
 npm install gulp-cli -g
 npm install mocha -g
