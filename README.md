@@ -1,4 +1,4 @@
-# @queue.js
+# queue.js
 [![Build Status](https://travis-ci.org/axetroy/queue.svg?branch=master)](https://travis-ci.org/axetroy/queue)
 ![Coverage Status](https://coveralls.io/repos/github/axetroy/queue/badge.svg?branch=master)
 [![Dependency](https://david-dm.org/axetroy/queue.svg)](https://david-dm.org/axetroy/queue.svg)
