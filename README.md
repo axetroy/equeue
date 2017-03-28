@@ -22,7 +22,7 @@ const Queue = require('@axetroy/queue')
 import Queue from '@axetroy/queue';
 ```
 
-### [Documentation](https://axetroy.github.io/queue);
+### [Documentation](https://axetroy.github.io/equeue);
 
 ### Contribution
 
