@@ -15,7 +15,7 @@
   "author": "axetroy",
   "license": "MIT",
   "devDependencies": {
-    "@types/chai": "^3.4.34",
+    "@types/chai": "^4.0.1",
     "@types/core-js": "^0.9.34",
     "@types/mocha": "^2.2.32",
     "@types/node": "^8.0.0",
