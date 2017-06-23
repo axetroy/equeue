@@ -18,7 +18,7 @@
     "@types/chai": "^3.4.34",
     "@types/core-js": "^0.9.34",
     "@types/mocha": "^2.2.32",
-    "@types/node": "^7.0.8",
+    "@types/node": "^8.0.0",
     "babel-core": "^6.14.0",
     "babel-loader": "^7.0.0",
     "babel-preset-es2015": "^6.14.0",
